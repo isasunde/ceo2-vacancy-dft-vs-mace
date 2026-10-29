@@ -218,3 +218,14 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Project specific files
+*.gpw
+*.traj
+*.log
+*.txt.gz
+.ipynb_checkpoints/
+tutorials/
+*.out
+*.err
+logs/
