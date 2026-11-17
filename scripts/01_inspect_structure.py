@@ -2,16 +2,16 @@
 import io
 import os
 
-import numpy as np
 import matplotlib
 matplotlib.use("Agg")
+import numpy as np
 import matplotlib.pyplot as plt
-from PIL import Image
 
-from ase.build import bulk
+from PIL import Image
 from ase.io import write
-from ase.neighborlist import neighbor_list
+from ase.build import bulk
 from ase.visualize.plot import plot_atoms
+from ase.neighborlist import neighbor_list
 
 A = 5.41
 os.makedirs("results", exist_ok=True)

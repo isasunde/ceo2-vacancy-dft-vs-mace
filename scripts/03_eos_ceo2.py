@@ -43,8 +43,12 @@ def energy(ecut, a):
         mode = PW(ecut),
         xc = XC,
         setups = {'Ce': f':f,{U}'},         # DFT+U on the Ce f-channel
-        kpts = {'size': (KPTS, KPTS, KPTS), 'gamma': True},
-        occupations = {'name': 'fermi-dirac', 'width': 0.05},
+        kpts = {'size': (KPTS, KPTS, KPTS), 
+                'gamma': True
+                },
+        occupations = {'name': 'fermi-dirac', 
+                       'width': 0.05
+                       },
         convergence = {'energy': 1e-6},
         txt = f'logs/eos_ecut{ecut}_a{a:.3f}.txt',
     )
@@ -63,7 +67,8 @@ for ecut in CUTOFFS:
             print(f'ecut = {ecut} eV, a = {a:.3f} A: {e:.6f} eV', flush = True)
 
     # Birch-Murnaghan fit: v0 (Å^3), e0 (eV), B (eV/Å^3)
-    v0, e0, B = EquationOfState(vols, es, eos = 'birchmurnaghan').fit()
+    eos = EquationOfState(vols, es, eos = 'birchmurnaghan')
+    v0, e0, B = eos.fit()
 
     results[ecut] = {
         'a0': (4 * v0) ** (1 / 3),          # fcc primitive cell: V = a^3 / 4
